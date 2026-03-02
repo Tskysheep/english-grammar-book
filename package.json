@@ -1,0 +1,26 @@
+{
+  "name": "english-grammar-book",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "github:build": "cross-env GITHUB='github' vuepress build docs",
+    "github:deploy": "sh deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tskysheep/english-grammar-book.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tskysheep/english-grammar-book/issues"
+  },
+  "homepage": "https://github.com/Tskysheep/english-grammar-book#readme",
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "vuepress": "1.4.1",
+    "vuepress-plugin-right-anchor": "^0.5.5"
+  }
+}
