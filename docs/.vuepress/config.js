@@ -2,6 +2,46 @@ module.exports = {
   base: process.env.GITHUB == 'github' ? '/english-grammar-book/' : '/',
   dest: process.env.GITHUB == 'github' ? 'docs/.vuepress/github' : 'docs/.vuepress/dist',
   title: '首页',
+  head: [
+    ['script', {}, `
+      (function () {
+        function initToggle() {
+          if (document.querySelector('.sidebar-toggle')) return;
+          var sidebar = document.querySelector('.sidebar');
+          if (!sidebar) return;
+          var btn = document.createElement('div');
+          btn.className = 'sidebar-toggle';
+          btn.title = '收起侧边栏';
+          btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>';
+          document.body.appendChild(btn);
+          var collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+          if (collapsed) {
+            document.body.classList.add('sidebar-collapsed');
+            btn.classList.add('is-collapsed');
+            btn.title = '展开侧边栏';
+            btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>';
+          }
+          btn.addEventListener('click', function () {
+            collapsed = !collapsed;
+            document.body.classList.toggle('sidebar-collapsed', collapsed);
+            btn.classList.toggle('is-collapsed', collapsed);
+            localStorage.setItem('sidebar-collapsed', collapsed);
+            if (collapsed) {
+              btn.title = '展开侧边栏';
+              btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>';
+            } else {
+              btn.title = '收起侧边栏';
+              btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>';
+            }
+          });
+        }
+        if (document.readyState === 'complete') { initToggle(); }
+        else { window.addEventListener('load', function () { setTimeout(initToggle, 300); }); }
+        var observer = new MutationObserver(function () { initToggle(); });
+        observer.observe(document.body, { childList: true, subtree: true });
+      })();
+    `]
+  ],
   plugins: [
     [
       'vuepress-plugin-right-anchor',

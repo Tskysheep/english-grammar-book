@@ -77,6 +77,49 @@ h3
     flex-direction: column;
     gap: 1rem;
 
+// Sidebar toggle button
+.sidebar-toggle
+  position: fixed;
+  top: 50%;
+  left: 20rem;
+  transform: translateY(-50%);
+  z-index: 11;
+  width: 24px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #eaecef;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  color: #999;
+  transition: left 0.25s ease, color 0.2s;
+  &:hover
+    color: #3eaf7c;
+  &.is-collapsed
+    left: 0;
+
+// Sidebar collapsed state
+.sidebar-collapsed
+  .sidebar
+    transform: translateX(-100%);
+  .page
+    padding-left: 0 !important;
+  .sidebar-toggle
+    left: 0;
+
+.sidebar
+  transition: transform 0.25s ease;
+
+.page
+  transition: padding-left 0.25s ease;
+
+@media (max-width: 719px)
+  .sidebar-toggle
+    display: none;
+
 .home_author
   font-size: 1.35rem;
   font-weight: 600;
