@@ -1,12 +1,19 @@
 module.exports = {
   base: process.env.GITHUB == 'github' ? '/english-grammar-book/' : '/',
   dest: process.env.GITHUB == 'github' ? 'docs/.vuepress/github' : 'docs/.vuepress/dist',
-  title: '首页',
+  title: '《语法俱乐部》&《旋元佑进阶文法》',
   head: [
     ['script', {}, `
       (function () {
         function initToggle() {
-          if (document.querySelector('.sidebar-toggle')) return;
+          var isHome = document.querySelector('.home-link.router-link-active.router-link-exact-active') || document.querySelector('.hero');
+          var existing = document.querySelector('.sidebar-toggle');
+          if (isHome) {
+            if (existing) existing.remove();
+            document.body.classList.remove('sidebar-collapsed');
+            return;
+          }
+          if (existing) return;
           var sidebar = document.querySelector('.sidebar');
           if (!sidebar) return;
           var btn = document.createElement('div');

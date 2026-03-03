@@ -7,13 +7,13 @@ footer: 感谢
 
 <div class="book-select">
   <a class="book-card" href="content/Ver1/Preface.html">
-    <img class="book-cover" src="/cover_club.png" alt="语法俱乐部">
+    <img class="book-cover" :src="$withBase('/cover_club.png')" alt="语法俱乐部">
     <h2>语法俱乐部</h2>
     <p>第一版</p>
     <span class="book-btn">开始阅读 →</span>
   </a>
   <a class="book-card" href="content/Ver3/Preface.html">
-    <img class="book-cover" src="/cover.jpg" alt="旋元佑进阶文法">
+    <img class="book-cover" :src="$withBase('/cover.jpg')" alt="旋元佑进阶文法">
     <h2>旋元佑进阶文法</h2>
     <p>第三版</p>
     <span class="book-btn">开始阅读 →</span>
