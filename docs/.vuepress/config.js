@@ -1,7 +1,7 @@
 module.exports = {
   base: process.env.GITHUB == 'github' ? '/english-grammar-book/' : '/',
   dest: process.env.GITHUB == 'github' ? 'docs/.vuepress/github' : 'docs/.vuepress/dist',
-  title: '旋元佑进阶文法',
+  title: '首页',
   plugins: [
     [
       'vuepress-plugin-right-anchor',
