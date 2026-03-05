@@ -56,11 +56,14 @@ module.exports = {
         showDepth: 6,
         expand: {
           trigger: 'click',
-          clickModeDefaultOpen: true
+          clickModeDefaultOpen: false
         }
       }
     ]
   ],
+  markdown: {
+    extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6']
+  },
   themeConfig: {
     repo: 'Tskysheep/english-grammar-book',
     displayAllHeaders: true,
